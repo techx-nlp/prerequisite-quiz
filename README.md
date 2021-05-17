@@ -51,7 +51,7 @@ reorder([1, 2, 3], 10) # [1, 2, 3]
 
 ### Special Sum (`special_sum`)
 
-Write a function `special_sum` that takes a list of numbers, and return the sum of all even numbers minus the sum of all odd numbers.
+Write a function `special_sum` that takes a list of numbers (positive integers), and return the sum of all even numbers minus the sum of all odd numbers.
 
 ```python
 def special_sum(num_list):
