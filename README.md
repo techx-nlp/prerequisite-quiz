@@ -13,7 +13,7 @@ This quiz assesses the student's ability to program and solve problems in Python
 
 ## Basics
 
-The `basics.py` file tests your familiarity with basic Python syntax and programming. It contains 3 sub-problems.
+The `basics.py` section tests your familiarity with basic Python syntax and programming. It contains 3 sub-problems.
 
 ### Greatest Common Factor (`greatest_common_factor`)
 
@@ -65,3 +65,78 @@ special_sum([1, 2, 3]) # -2
 special_sum([3, 2, 6, 9, 0]) # -4
 special_sum([1, 2, 3, 4, 5, 6, 7, 8]) # 4
 ```
+
+## Autograd
+
+The `autograd.py` section tests your understanding of mathematical concepts such as derivatives and chain rule. This section has only one problem: you need to implement a very simple "autograd" system.
+
+"Autograd" automatically builds a differentiation graph (or calculation graph) as the program carries out arithemetic operations. Consider this python expression:
+
+```python
+y = (m * x) + b
+```
+
+Its computational graph might look like:
+```
+        y
+        |
+        +
+       / \
+      K   b
+     /
+    *
+   / \
+  m   x
+```
+
+With this in mind, create a `Variable` and `Constant` class such that they support evaluation and partial differentiation as illustrated below:
+```python
+>>> x = Variable(name='x')
+>>> m = Variable(name='m')
+>>> c = Constant(5)
+>>>
+>>> y = m * x * c
+>>>
+>>> y.evaluate(inputs={'m': 10, 'x': 15}) # calculate the value of y
+750
+>>>
+>>> y.grad(respect_to='x', inputs={'m': 2, 'x': 5}) # calculate the derivative of y in respect to x
+10
+```
+
+Chains should also be supported:
+```python
+>>> a = Variable(name='e')
+>>> b = Variable(name='r')
+>>> c = Constant(4)
+>>> y = (a + b) ** c
+>>>
+>>> y.grad(respect_to='e', inputs={'e': 3, 'r': 2})
+500
+```
+
+Here's another example:
+```python
+>>> x = Variable(name='x')
+>>> a = Constant(3) * (x + Constant(5))
+>>> b = Constant(8) * (x - Constant(20))
+>>> c = a / b
+>>>
+>>> c.evaluate({'x': 30})
+1.3125
+>>>
+>>> c.grad('x', {'x': 10})
+-0.09375
+```
+
+The following operations should be supported:
+- Addition(+)
+- Subtraction(-)
+- Multiplication(\*)
+- Division(/)
+- Power(\*\*)
+
+## Notes
+
+- The power term `c` will always be a constant in any `a ^ c` for simplicity
+- If you are not familar with overriding the behavior of operators (`+`, `-`, `*`, etc) in Python, check out [this tutorial](https://www.geeksforgeeks.org/operator-overloading-in-python/)
