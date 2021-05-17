@@ -5,3 +5,14 @@
 # Please fill in the content of the following functions/classes
 # according to the instruction given by the accompanying PDF file.
 
+
+def greatest_common_factor(a, b):
+    return
+
+
+def reorder(num_list, num):
+    return
+
+
+def special_sum(num_list):
+    return

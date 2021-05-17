@@ -5,3 +5,6 @@
 # Please fill in the content of the following functions/classes
 # according to the instruction given by the accompanying PDF file.
 
+
+def interpreter(code):
+    return
