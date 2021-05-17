@@ -1,2 +1,5 @@
-# prerequisite-quiz
-Preliminary quiz before the course to assess students' understanding of the prerequisites.
+# Coding Quiz
+
+**Estimated Completion Time:** 1 hour
+
+This quiz assesses the student's ability to program and solve problems in Python.
