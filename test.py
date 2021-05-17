@@ -27,17 +27,20 @@ def assert_equal(output, expected):
     if output == expected:
         good(f'Test Passed: {output}')
     else:
-        bad(f'Error: Expected {expected}, instead got {output}')
+        bad(f'Test Failed: Expected {expected}, instead got {output}')
         abort()
 
 
 def test(module, test_set):
     for func_name in test_set:
         bold(f'Testing Function "{func_name}"')
-        func = getattr(module, func_name)
+        func = getattr(module, func_name, None)
 
         if func is None:
-            bad('Function {func_name} not found in file {module}')
+            bad(
+                f'Function "{func_name}" not found in file '
+                f'"{module.__name__}.py"'
+            )
             abort()
 
         for args, answer in test_set[func_name]:
