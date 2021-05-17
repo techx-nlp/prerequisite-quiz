@@ -77,6 +77,7 @@ y = (m * x) + b
 ```
 
 Its computational graph might look like:
+
 ```
         y
         |
@@ -90,6 +91,7 @@ Its computational graph might look like:
 ```
 
 With this in mind, create a `Variable` and `Constant` class such that they support evaluation and partial differentiation as illustrated below:
+
 ```python
 >>> x = Variable(name='x')
 >>> m = Variable(name='m')
@@ -105,6 +107,7 @@ With this in mind, create a `Variable` and `Constant` class such that they suppo
 ```
 
 Chains should also be supported:
+
 ```python
 >>> a = Variable(name='e')
 >>> b = Variable(name='r')
@@ -116,6 +119,7 @@ Chains should also be supported:
 ```
 
 Here's another example:
+
 ```python
 >>> x = Variable(name='x')
 >>> a = Constant(3) * (x + Constant(5))
@@ -136,7 +140,7 @@ The following operations should be supported:
 - Division(/)
 - Power(\*\*)
 
-## Notes
+### Notes
 
 - The power term `c` will always be a constant in any `a ^ c` for simplicity
 - If you are not familar with overriding the behavior of operators (`+`, `-`, `*`, etc) in Python, check out [this tutorial](https://www.geeksforgeeks.org/operator-overloading-in-python/)
