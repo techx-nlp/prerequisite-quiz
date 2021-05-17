@@ -28,9 +28,8 @@ failure = log_func('1;91')
 
 
 def abort():
-    print()
-    failure('TEST FAILED')
-    sys.exit(1)
+    global exit_code
+    exit_code = 1
 
 
 def assert_equal(output, expected):
@@ -102,6 +101,12 @@ basics_set = {
     ]
 }
 
+exit_code = 0
 
 test(basics, basics_set)
-good('ALL TEST PASSED')
+
+if exit_code == 0:
+    good('ALL TEST PASSED')
+else:
+    failure('TEST FAILED')
+    sys.exit(1)
