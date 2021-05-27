@@ -54,11 +54,31 @@ def test(module, test_set):
                 f'"{module.__name__}.py"'
             )
             abort()
-
-        for args, answer in test_set[func_name]:
-            assert_equal(func(*args), answer)
+        else:
+            for args, answer in test_set[func_name]:
+                assert_equal(func(*args), answer)
 
         print()
+
+
+def autograd_test():
+    bold(f'Testing File "autograd.py":')
+    print()
+
+    Variable = getattr(autograd, 'Variable', None)
+    Constant = getattr(autograd, 'Constant', None)
+
+    if Variable is None:
+        bad('Class "Variable" not found in file "autograd.py"')
+        abort()
+
+    if Constant is None:
+        bad('Class "Constant" not found in file "autograd.py"')
+        abort()
+
+    if Variable is None or Constant is None:
+        print()
+        return
 
 
 # ((*inputs), expected)
@@ -104,6 +124,7 @@ basics_set = {
 exit_code = 0
 
 test(basics, basics_set)
+autograd_test()
 
 if exit_code == 0:
     good('ALL TEST PASSED')
