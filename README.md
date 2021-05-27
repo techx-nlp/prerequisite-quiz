@@ -76,7 +76,7 @@ The `autograd.py` section tests your understanding of mathematical concepts such
 y = (m * x) + b
 ```
 
-Its computational graph might look like:
+Its computational graph looks like (`K` is an abstract term representing `m * x`):
 
 ```
         y
@@ -106,7 +106,7 @@ With this in mind, create a `Variable` and `Constant` class such that they suppo
 10
 ```
 
-Chains should also be supported:
+Here's another example:
 
 ```python
 >>> a = Variable(name='e')
@@ -118,29 +118,27 @@ Chains should also be supported:
 500
 ```
 
-Here's another example:
+Chains should also be supported:
 
 ```python
 >>> x = Variable(name='x')
 >>> a = Constant(3) * (x + Constant(5))
->>> b = Constant(8) * (x - Constant(20))
->>> c = a / b
+>>> b = Constant(8) * (x + Constant(20))
+>>> c = a + b
 >>>
 >>> c.evaluate({'x': 30})
-1.3125
+505
 >>>
 >>> c.grad('x', {'x': 10})
--0.09375
+11
 ```
 
 The following operations should be supported:
 - Addition(+)
-- Subtraction(-)
 - Multiplication(\*)
-- Division(/)
 - Power(\*\*)
 
 ### Notes
 
 - The power term `c` will always be a constant in any `a ^ c` for simplicity
-- If you are not familar with overriding the behavior of operators (`+`, `-`, `*`, etc) in Python, check out [this tutorial](https://www.geeksforgeeks.org/operator-overloading-in-python/)
+- If you are not familar with overriding the behavior of operators (`+`, `*`, etc) in Python, check out [this tutorial](https://www.geeksforgeeks.org/operator-overloading-in-python/)
