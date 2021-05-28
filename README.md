@@ -157,7 +157,7 @@ c = add a 7
 output c
 ```
 
-The above code has a single output value; therefore, its return value should be `[12]`:
+The above code has a single output value; therefore, its return value should be `[12]`. Lines of code are separated via line breaks `\n`:
 
 ```python
 interpreter('a = 5\nc = add a 7\noutput c') # [12]
@@ -196,9 +196,9 @@ The `output` function takes a number literal or a variable, and adds the value t
 
 There might also be extra space (but there will always be at least one space between an arithmetic operator and its parameters to separate the tokens):
 ```
-my_var     =      5.6
+  my_var     =      5.6
 a   =       my_var
-b     =      add      my_var     10
+   b     =      add      my_var     10
 ```
 
 If in doubt, take a look at the example test cases in `test.py`.
