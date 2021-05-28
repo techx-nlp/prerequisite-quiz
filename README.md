@@ -145,9 +145,9 @@ The following operations should be supported:
 
 ## Interpreter
 
-The `interpreter.py` section tests your ability to manipulate strings and spot recurring patterns. This section has only one problem: you need to write a simple interpreter that evaluates a piece of given text code.
+The `interpreter.py` section tests your ability to manipulate strings and spot recurring patterns. This section has only one problem: you need to write a simple interpreter that evaluates a piece of given text code (fill in the `interpreter` function).
 
-The input will be a string containing the code, and returns a list of the outputs.
+The input will be a string containing the code. The return value is a list of the outputs of the program.
 
 The custom syntax for the code looks like:
 
