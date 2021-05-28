@@ -1,6 +1,6 @@
 # Coding Quiz
 
-**Estimated Completion Time:** 1 hour
+**Estimated Completion Time:** 1.5 hour
 
 This quiz assesses the student's ability to program and solve problems in Python.
 
@@ -142,3 +142,65 @@ The following operations should be supported:
 
 - The power term `c` will always be a constant in any `a ^ c` for simplicity
 - If you are not familar with overriding the behavior of operators (`+`, `*`, etc) in Python, check out [this tutorial](https://www.geeksforgeeks.org/operator-overloading-in-python/)
+
+## Interpreter
+
+The `interpreter.py` section tests your ability to manipulate strings and spot recurring patterns. This section has only one problem: you need to write a simple interpreter that evaluates a piece of given text code.
+
+The input will be a string containing the code, and returns a list of the outputs.
+
+The custom syntax for the code looks like:
+
+```
+a = 5
+c = add a 7
+output c
+```
+
+The above code has a single output value; therefore, its return value should be `[12]`:
+
+```python
+interpreter('a = 5\nc = add a 7\noutput c') # [12]
+```
+
+Consider another example:
+
+```python
+a = 6
+b = div 5 10
+c = mul a b
+output c
+output 0.5
+```
+
+The above code has 2 return values, so the output list must contain both of them in the output order:
+
+```python
+interpreter('a = 6\nb = div 5 10\nc = mul a b\noutput c\noutputb') # [3, 0.5]
+```
+
+### Specification
+
+The interpreter must handle 4 prefix arithmetic operators: `add` (adds the 2 parameters), `sub` (subtracts the first parameter by the second one), `mul` (multiplies the 2 parameters) and `div` (divides the first parameter by the second one). Each of them accepts 2 parameters, with each one being a direct number literal (e.g. `4`, `6.75`, `-18`) or a variable name (e.g. `foo`, `a`, `my_var`).
+
+There will be no nested operators (e.g. no `add 5 mul 6 7`).
+
+Assignment of a variable takes a number literal, a variable or an operator expression as the right hand side:
+```
+my_var = 5.6
+a = my_var
+b = add my_var 10
+```
+
+The `output` function takes a number literal or a variable, and adds the value to the output list (as numbers, not strings!).
+
+There might also be extra space (but there will always be at least one space between an arithmetic operator and its parameters to separate the tokens):
+```
+my_var     =      5.6
+a   =       my_var
+b     =      add      my_var     10
+```
+
+If in doubt, take a look at the example test cases in `test.py`.
+
+Good luck!
