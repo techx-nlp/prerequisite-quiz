@@ -32,11 +32,11 @@ def abort():
     exit_code = 1
 
 
-def assert_equal(output, expected):
+def assert_equal(output, expected, meta=''):
     if output == expected:
-        good(f'Test Passed: {output}')
+        good(f'Test Passed{meta}: {output}')
     else:
-        bad(f'Test Failed: Expected {expected}, instead got {output}')
+        bad(f'Test Failed{meta}: Expected {expected}, instead got {output}')
         abort()
 
 
@@ -66,19 +66,38 @@ def autograd_test():
     print()
 
     Variable = getattr(autograd, 'Variable', None)
-    Constant = getattr(autograd, 'Constant', None)
+    C = getattr(autograd, 'Constant', None)
 
     if Variable is None:
         bad('Class "Variable" not found in file "autograd.py"')
         abort()
 
-    if Constant is None:
+    if C is None:
         bad('Class "Constant" not found in file "autograd.py"')
         abort()
 
-    if Variable is None or Constant is None:
+    if Variable is None or C is None:
         print()
         return
+
+    bold(f'Testing Equation (3 * x + 2) ^ 3 * (5 * y + 7 * x) ^ 2')
+    x = Variable(name='x')
+    y = Variable(name='y')
+    equation = (C(3) * x + C(2)) ** C(3) * (C(5) * y + C(7) * x) ** C(2)
+
+    assert_equal(
+        equation.grad('x', {'x': 10, 'y': 2}),
+        95682560,
+        ' (dx; x: 10, y: 2)'
+    )
+
+    assert_equal(
+        equation.grad('y', {'x': 5, 'y': 3}),
+        2456500,
+        ' (dx; x: 5, y: 3)'
+    )
+
+    print()
 
 
 # ((*inputs), expected)
