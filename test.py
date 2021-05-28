@@ -94,7 +94,38 @@ def autograd_test():
     assert_equal(
         equation.grad('y', {'x': 5, 'y': 3}),
         2456500,
-        ' (dx; x: 5, y: 3)'
+        ' (dy; x: 5, y: 3)'
+    )
+
+    assert_equal(
+        equation.grad('y', {'x': 0.5, 'y': 1.5}),
+        4716.25,
+        ' (dy; x: 0.5, y: 1.5)'
+    )
+
+    print()
+    bold(f'Testing Equation 3 * (x + y + z) ^ 2 + 2 * y * x * z')
+    x = Variable(name='x')
+    y = Variable(name='y')
+    z = Variable(name='z')
+    equation = C(3) * (x + y + z) ** C(2) + C(2) * y * x * z
+
+    assert_equal(
+        equation.grad('x', {'x': 7, 'y': 2, 'z': 3}),
+        84,
+        ' (dx; x: 7, y: 2, z: 3)'
+    )
+
+    assert_equal(
+        equation.grad('y', {'x': 2, 'y': 3, 'z': 1.5}),
+        45.0,
+        ' (dy; x: 2, y: 3, z: 1.5)'
+    )
+
+    assert_equal(
+        equation.grad('z', {'x': 1.5, 'y': 2, 'z': 0.25}),
+        28.5,
+        ' (dz; x: 1.5, y: 2, z: 0.25)'
     )
 
     print()

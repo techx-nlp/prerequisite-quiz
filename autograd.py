@@ -3,7 +3,10 @@
 # This file corresponds to Question 4.
 #
 # Please fill in the content of the following functions/classes
-# according to the instruction given by the accompanying PDF file.
+# according to the instructions given by the accompanying PDF file.
+#
+# Note that the template code in this problem merely serves as a
+# guide; feel free to change it.
 
 
 class Variable:
