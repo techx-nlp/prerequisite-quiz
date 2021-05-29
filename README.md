@@ -185,21 +185,25 @@ The interpreter must handle 4 prefix arithmetic operators: `add` (adds the 2 par
 
 There will be no nested operators (e.g. no `add 5 mul 6 7`).
 
-Assignment of a variable takes a number literal, a variable or an operator expression as the right hand side:
+Assignment of a variable takes a number literal, a variable or an operator expression as the right hand side. Variables can also be reassigned:
 ```
 my_var = 5.6
 a = my_var
 b = add my_var 10
+a = mul 10 b
 ```
 
 The `output` function takes a number literal or a variable, and adds the value to the output list (as numbers, not strings!).
 
 There might also be extra space (but there will always be at least one space between an arithmetic operator and its parameters to separate the tokens):
-```
+``` 
   my_var     =      5.6
 a   =       my_var
    b     =      add      my_var     10
+hello=123
 ```
+
+All given code are valid; there will be no need for error detection.
 
 If in doubt, take a look at the example test cases in `test.py`.
 

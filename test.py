@@ -171,10 +171,37 @@ basics_set = {
     ]
 }
 
+interpreter_set = {
+    'interpreter': [
+        (
+            ('a = 5\nb = 10\nc = add a b\nnoutput c\noutput b',),
+            [15, 10]
+        ),
+        (
+            ('  my_var   =29\nout= 1\nc =  add my_var out\nnoutput    c',),
+            [30]
+        ),
+        (
+            ('output   15\nfoo = div 35 7\noutput foo',),
+            [15, 5]
+        ),
+        (
+            ('a = 2\noutput a\na = mul a a\noutput a\na = mul a a\noutput a',),
+            [2, 4, 8]
+        ),
+        (
+            ('var = 10\ntest=20  \nw=sub test var\noutput w\noutput w',),
+            [10, 10]
+        )
+    ]
+}
+
+
 exit_code = 0
 
 test(basics, basics_set)
 autograd_test()
+test(interpreter, interpreter_set)
 
 if exit_code == 0:
     good('ALL TEST PASSED')
