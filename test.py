@@ -174,11 +174,11 @@ basics_set = {
 interpreter_set = {
     'interpreter': [
         (
-            ('a = 5\nb = 10\nc = add a b\nnoutput c\noutput b',),
+            ('a = 5\nb = 10\nc = add a b\noutput c\noutput b',),
             [15, 10]
         ),
         (
-            ('  my_var   =29\nout= 1\nc =  add my_var out\nnoutput    c',),
+            ('  my_var   =29\nout= 1\nc =  add my_var out\noutput    c',),
             [30]
         ),
         (
@@ -187,7 +187,7 @@ interpreter_set = {
         ),
         (
             ('a = 2\noutput a\na = mul a a\noutput a\na = mul a a\noutput a',),
-            [2, 4, 8]
+            [2, 4, 16]
         ),
         (
             ('var = 10\ntest=20  \nw=sub test var\noutput w\noutput w',),

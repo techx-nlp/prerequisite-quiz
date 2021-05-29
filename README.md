@@ -7,7 +7,7 @@ This quiz assesses the student's ability to program and solve problems in Python
 ## Instructions
 
 - There are 3 Python files that you need to complete: `basics.py`, `autograd.py` and `interpreter.py`
-- Do not import/use any libraries in your program
+- Do not import/use any libraries in your program (this includes the usage of the `eval` function)
 - You can use the `test.py` script to test your programs
 - Do not edit `test.py`
 
@@ -68,7 +68,7 @@ special_sum([1, 2, 3, 4, 5, 6, 7, 8]) # 4
 
 ## Autograd
 
-The `autograd.py` section tests your understanding of mathematical concepts such as derivatives and chain rule. This section has only one problem: you need to implement a very simple "autograd" system.
+The `autograd.py` section tests your understanding of mathematical concepts such as derivatives and chain rule, as well as basic programming abstractions such as object-oriented programming. This section has only one problem: you need to implement a very simple "autograd" system.
 
 "Autograd" automatically builds a differentiation graph (or calculation graph) as the program carries out arithemetic operations. Consider this python expression:
 
@@ -181,7 +181,7 @@ interpreter('a = 6\nb = div 5 10\nc = mul a b\noutput c\noutputb') # [3, 0.5]
 
 ### Specification
 
-The interpreter must handle 4 prefix arithmetic operators: `add` (adds the 2 parameters), `sub` (subtracts the first parameter by the second one), `mul` (multiplies the 2 parameters) and `div` (divides the first parameter by the second one). Each of them accepts 2 parameters, with each one being a direct number literal (e.g. `4`, `6.75`, `-18`) or a variable name (e.g. `foo`, `a`, `my_var`).
+The interpreter must handle 4 prefix arithmetic operators: `add` (adds the 2 parameters), `sub` (subtracts the first parameter by the second one), `mul` (multiplies the 2 parameters) and `div` (divides the first parameter by the second one). Each of them accepts 2 parameters, with each one being a direct number literal (e.g. `4`, `6.75`, `-18`) or a variable name (e.g. `foo`, `a`, `my_var`). Variable names cannot be a keyword (e.g. `add`, `sub`, `output`).
 
 There will be no nested operators (e.g. no `add 5 mul 6 7`).
 
