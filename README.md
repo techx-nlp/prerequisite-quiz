@@ -16,4 +16,4 @@ A `.csv` file with one column: the predicted quality score of the question (in t
 
 ## Notes
 
-- The column separator in `train.csv` and `test.csv` is tab `\t` (as opposed to comma `,`)
+- The column separator in `train.csv` and `test.csv` is tab `\t` (not comma `,`)
